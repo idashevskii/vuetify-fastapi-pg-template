@@ -4,8 +4,11 @@ services:
     build:
       dockerfile: Dockerfile.dev
     volumes:
-      - ./services/ui:/app
-      - dev-ui-cache:/root
+      - ./services/ui/src:/app/src
+      - ./services/ui/public:/app/public
+    environment:
+      - API_BASE_URI=$API_BASE_URI
+      - LISTEN_PORT=$LISTEN_PORT
 
   backend:
     build:
@@ -27,6 +30,3 @@ services:
     user: ${MY_UID:-1000}:${MY_GID:-1000}
     volumes:
       - ./services/migrations/:/db/:rw
-
-volumes:
-  dev-ui-cache:

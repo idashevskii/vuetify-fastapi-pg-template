@@ -10,7 +10,7 @@ services:
     build:
       context: ./services/reverse-proxy
     ports:
-      - "${LISTEN_IP}:8088:80"
+      - "${LISTEN_IP}:${LISTEN_PORT}:80"
     environment:
       - UI_BASE_URI=$UI_BASE_URI
       - API_BASE_URI=$API_BASE_URI

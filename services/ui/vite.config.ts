@@ -41,6 +41,6 @@ export default defineConfig({
     strictPort: true,
     host: true,
     port: 80,
-    hmr: { clientPort: 8088 },
+    hmr: { clientPort: Number(process.env.LISTEN_PORT) },
   },
 });
